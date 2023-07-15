@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/fr";
 
 import themeMui from "./theme/muiTheme";
 
@@ -37,7 +40,9 @@ root.render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themeMui}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
           <RouterProvider router={router} />
+        </LocalizationProvider>
       </ThemeProvider>
     </StyledEngineProvider>
   </React.StrictMode>
