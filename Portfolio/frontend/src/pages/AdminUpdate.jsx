@@ -1,14 +1,15 @@
 import { Button, TextField } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { postProject } from "../services/api.projects";
+import { useNavigate, useParams } from "react-router-dom";
+import { updateProject } from "../services/api.projects";
 
-function Admin() {
+function AdminUpdate() {
   const { handleSubmit, control } = useForm();
   const navigate = useNavigate();
+  const { id } = useParams();
   const onSubmit = async (data) => {
     try {
-      await postProject(data);
+      await updateProject(id, data);
       navigate("/home");
     } catch (error) {
       console.error(error);
@@ -68,7 +69,7 @@ function Admin() {
               <TextField
                 value={value}
                 onChange={onChange}
-                placeholder="1ere photo"
+                placeholder="1ere Photo"
                 variant="outlined"
                 className="mb-4"
                 multiline
@@ -143,7 +144,7 @@ function Admin() {
             sx={{ width: "125px", color: "black" }}
             onClick={handleSubmit(onSubmit)}
           >
-            Save
+            Update
           </Button>
         </div>
       </form>
@@ -151,4 +152,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default AdminUpdate;

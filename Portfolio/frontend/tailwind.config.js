@@ -15,7 +15,7 @@ module.exports = {
       },
       colors: {
         primary: {
-          100: "FCFAFF", // main text
+          100: "#F5F5F5", // main text
           800: "#4EE1A0", // green
         },
         secondary: {

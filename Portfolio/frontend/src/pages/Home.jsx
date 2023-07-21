@@ -1,7 +1,7 @@
-import Test from "../components/Test";
+import AboutMe from "../components/AboutMe";
 
 function Home() {
-  return <Test />;
+  return <AboutMe />;
 }
 
 export default Home;

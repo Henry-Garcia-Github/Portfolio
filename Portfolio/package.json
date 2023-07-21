@@ -1,10 +1,10 @@
 {
   "name": "fullstack_template",
   "version": "1.0.0",
+  "proxy": "http://localhost:6001",
   "config": {
     "cli": "npm"
-  },  
-
+  },
   "scripts": {
     "postinstall": "cross-env-shell \"husky install && cd ./frontend && $npm_package_config_cli install && cd ../backend && $npm_package_config_cli install\"",
     "migrate": "cd ./backend && node migrate.js",
@@ -14,15 +14,13 @@
     "lint": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run lint && cd ../backend && $npm_package_config_cli run lint\"",
     "fix": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run fix && cd ../backend && $npm_package_config_cli run fix\""
   },
-
   "author": "Henry Garcia",
   "license": "ISC",
   "description": "This is my portfolio website.",
-
   "dependencies": {
+    "cors": "^2.8.5",
     "husky": "^8.0.3"
   },
-
   "devDependencies": {
     "concurrently": "^8.2.0",
     "cross-env": "^7.0.3",

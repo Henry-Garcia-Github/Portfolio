@@ -2,9 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import "dayjs/locale/fr";
 
 import themeMui from "./theme/muiTheme";
 
@@ -12,10 +9,13 @@ import ErrorPage from "./pages/ErrorPage";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import SelectProject from "./pages/SelectProject";
+import Projects from "./pages/Projects";
 
 // add contexts
 
 import "./style/main.scss";
+import AdminUpdate from "./pages/AdminUpdate";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +24,23 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "home/",
+        path: "/home",
         element: <Home />,
       },
       {
-        path: "admin/",
+        path: "/projects/:id",
+        element: <SelectProject />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
+      },
+      {
+        path: "/admin/:id",
+        element: <AdminUpdate />,
+      },
+      {
+        path: "/admin",
         element: <Admin />,
       },
     ],
@@ -40,9 +52,7 @@ root.render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themeMui}>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
-          <RouterProvider router={router} />
-        </LocalizationProvider>
+        <RouterProvider router={router} />
       </ThemeProvider>
     </StyledEngineProvider>
   </React.StrictMode>
