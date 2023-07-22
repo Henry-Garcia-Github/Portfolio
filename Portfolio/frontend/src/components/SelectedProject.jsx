@@ -32,14 +32,13 @@ function SelectedProject() {
   };
 
   return (
-    <div className="mt-20">
+    <div
+      className="mt-20 overflow-y-scroll no-scrollbar"
+      style={{ height: `calc(100vh - 200px)` }}
+    >
       <div className="flex flex-col items-center gap-10">
-        <img
-          className="justify-items-center w-72"
-          src={selectedProject.logo}
-          alt=""
-        />
-        <div className="flex gap-14">
+        <img className="w-72" src={selectedProject.logo} alt="" />
+        <div className="flex flex-col gap-10 xl:flex-row xl:gap-14">
           <div className="justify-items-center h-96 relative">
             <img className="h-96" src={selectedImage} alt="" />
             <img
@@ -58,14 +57,15 @@ function SelectedProject() {
               alt=""
             />
           </div>
-          <div className="bg-black p-12 w-3/5">
+          <div className="bg-black p-6 xl:w-3/5">
             <p
+              className="text-sm lg:text-lg"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: selectedProject.description }}
             />
           </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 xl:flex-row xl:gap-10">
           <button
             type="button"
             onClick={() => handleUpdateProject()}
